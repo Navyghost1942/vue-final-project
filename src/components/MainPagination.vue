@@ -1,24 +1,35 @@
 <script setup>
-  import { ref } from 'vue'
-  const pages = ref(10)
-  const activePage = ref(4)
+  import useAPI from '@/composables/useAPI'
 
-  const prevPage = () => {
+  const { activePage, pages, getCoffees } = useAPI()
+
+  const prevPage = async () => {
     if (activePage.value > 1) {
       activePage.value--
+      await getCoffees()
     }
   }
-  const nextPage = () => {
+  const nextPage = async () => {
     if (activePage.value < pages.value) {
       activePage.value++
+      await getCoffees()
     }
+  }
+  const jumpPage = async (page) => {
+    activePage.value = page
+    await getCoffees()
   }
 </script>
 
 <template>
   <div class="pagination">
     <button class="action" :disabled="activePage === 1" @click="prevPage">Prev</button>
-    <button v-for="page in pages" :key="page" class="page" :class="page === activePage ? 'active' : ''" @click="activePage = page"
+    <button
+      v-for="page in pages"
+      :key="page"
+      class="page"
+      :class="page === activePage ? 'active' : ''"
+      @click="jumpPage(page)"
     >
       {{ page }}
     </button>
