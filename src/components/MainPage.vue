@@ -2,7 +2,7 @@
   import { onMounted } from 'vue'
 
   import MainSearch from '@/components/MainSearch.vue'
-  import MainCards from '@/components/MainCards.vue'
+  import MainCards from '@/components/Maincards.vue'
   import MainPagination from '@/components/MainPagination.vue'
 
   import useAPI from '@/composables/useAPI'

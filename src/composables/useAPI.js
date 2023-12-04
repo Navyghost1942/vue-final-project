@@ -30,7 +30,7 @@ const getCoffees = async () => {
 }
 
 const fetchCoffee = async (id) => {
-    const { data } = await api.get(`/api/Coffees/${id}`)
+    const { data } = await api.get(`/api/coffees/${id}`)
     currentCoffee.value = data
     console.log(data)
   }
