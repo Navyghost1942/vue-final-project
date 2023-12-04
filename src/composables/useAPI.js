@@ -18,7 +18,7 @@ const api = axios.create({
 
 const getCoffees = async () => {
   loading.value = true
-  const { data, headers } = await api.get('/api/coffees', {
+  const { data, headers } = await api.get('/api/coffee', {
     params: {
       page: activePage.value,
       size: pageSize.value,
